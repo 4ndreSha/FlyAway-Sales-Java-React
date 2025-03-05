@@ -1,6 +1,7 @@
 # FlyAway-Sales-Java-React
 
 [Деплой приложения](https://your-deploy-link.com)
+
 [SonarCloud](https://sonarcloud.io/dashboard?id=FlyAway-Sales-Java-React)
 
 ## Описание
