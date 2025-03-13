@@ -1,7 +1,7 @@
 package com.flyaway.dao;
 
 import com.flyaway.util.DBConnection;
-import com.flyaway.model.Route;
+import com.flyaway.entity.Route;
 
 import java.sql.*;
 import java.util.ArrayList;

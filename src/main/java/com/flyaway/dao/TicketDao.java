@@ -1,7 +1,7 @@
 package com.flyaway.dao;
 
-import com.flyaway.model.TicketDetails;
-import com.flyaway.model.Ticket;
+import com.flyaway.entity.TicketDetails;
+import com.flyaway.entity.Ticket;
 import com.flyaway.util.DBConnection;
 
 import java.sql.*;

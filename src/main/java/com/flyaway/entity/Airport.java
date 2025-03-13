@@ -1,4 +1,4 @@
-package com.flyaway.model;
+package com.flyaway.entity;
 
 public class Airport {
     private String airportCode;

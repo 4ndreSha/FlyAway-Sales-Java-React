@@ -1,6 +1,6 @@
 package com.flyaway.dao;
 
-import com.flyaway.model.Aircraft;
+import com.flyaway.entity.Aircraft;
 import com.flyaway.util.DBConnection;
 
 import java.sql.*;

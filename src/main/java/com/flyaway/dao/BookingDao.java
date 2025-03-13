@@ -1,6 +1,6 @@
 package com.flyaway.dao;
 
-import com.flyaway.model.Booking;
+import com.flyaway.entity.Booking;
 import com.flyaway.util.DBConnection;
 
 import java.math.BigDecimal;

@@ -1,8 +1,8 @@
 package com.flyaway.servlet;
 
 import com.flyaway.dao.BookingDao;
-import com.flyaway.model.Booking;
-import com.flyaway.model.Passenger;
+import com.flyaway.entity.Booking;
+import com.flyaway.entity.Passenger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

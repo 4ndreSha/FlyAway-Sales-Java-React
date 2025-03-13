@@ -6,7 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-import com.flyaway.model.City;
+import com.flyaway.entity.City;
 import com.flyaway.util.CityService;
 
 @WebServlet("/cities")

@@ -59,7 +59,7 @@
     <hr class="my-4">
     <p>Гибкие маршруты, выгодные предложения и комфортные путешествия.</p>
     <a href="searchFlights" class="btn btn-primary btn-lg">Начать поиск рейсов</a>
-    <a href="map.jsp" class="btn btn-outline-light btn-lg">Открыть карту маршрутов</a>
+    <a href="map" class="btn btn-outline-light btn-lg">Открыть карту маршрутов</a>
   </div>
 </header>
 

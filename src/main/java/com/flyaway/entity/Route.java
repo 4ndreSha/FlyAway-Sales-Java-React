@@ -1,4 +1,4 @@
-package com.flyaway.model;
+package com.flyaway.entity;
 
 public class Route {
     private String flightNo;

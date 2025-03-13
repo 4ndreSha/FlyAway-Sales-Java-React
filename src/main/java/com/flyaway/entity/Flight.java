@@ -1,4 +1,4 @@
-package com.flyaway.model;
+package com.flyaway.entity;
 
 import java.sql.Timestamp;
 import java.math.BigDecimal;

@@ -1,7 +1,7 @@
 package com.flyaway.servlet;
 
 import com.flyaway.dao.RouteDao;
-import com.flyaway.model.Route;
+import com.flyaway.entity.Route;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

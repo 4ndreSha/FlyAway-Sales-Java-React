@@ -3,7 +3,7 @@ package com.flyaway.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.flyaway.model.City;
+import com.flyaway.entity.City;
 
 public class CityService {
     public List<City> getCities() {

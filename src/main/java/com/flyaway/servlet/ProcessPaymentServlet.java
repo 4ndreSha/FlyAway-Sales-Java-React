@@ -2,14 +2,13 @@ package com.flyaway.servlet;
 
 import com.flyaway.dao.BookingDao;
 import com.flyaway.dao.PaymentDao;
-import com.flyaway.model.Booking;
-import com.flyaway.model.Payment;
+import com.flyaway.entity.Booking;
+import com.flyaway.entity.Payment;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @WebServlet("/processPayment")
