@@ -1,4 +1,4 @@
-package com.flyaway.jdbcapp;
+package com.flyaway.jdbcapp.entity;
 
 public class Airport {
     private String airportCode;

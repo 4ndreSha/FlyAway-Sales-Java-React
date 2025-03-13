@@ -1,4 +1,4 @@
-package com.flyaway.jdbcapp;
+package com.flyaway.jdbcapp.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;

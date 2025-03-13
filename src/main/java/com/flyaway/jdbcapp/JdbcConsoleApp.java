@@ -1,7 +1,9 @@
 package com.flyaway.jdbcapp;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import com.flyaway.jdbcapp.dao.*;
+import com.flyaway.jdbcapp.entity.*;
+import com.flyaway.jdbcapp.services.CRUDService;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +15,7 @@ public class JdbcConsoleApp {
     private static FlightDao flightDao = new FlightDao();
     private static RouteDao routeDao = new RouteDao();
     private static Scanner scanner = new Scanner(System.in);
+    private static CRUDService crudService = new CRUDService(bookingDao, scanner);
 
     public static void main(String[] args) {
         boolean running = true;
@@ -58,7 +61,6 @@ public class JdbcConsoleApp {
         System.out.print("Ваш выбор: ");
     }
 
-    // Подменю для бронирований (CRUD)
     private static void manageBookingsMenu() {
         boolean inBookingMenu = true;
         while (inBookingMenu) {
@@ -73,19 +75,19 @@ public class JdbcConsoleApp {
             String choice = scanner.nextLine().trim();
             switch (choice) {
                 case "1":
-                    createBooking();
+                    crudService.createBooking();
                     break;
                 case "2":
-                    getBooking();
+                    crudService.getBooking();
                     break;
                 case "3":
-                    updateBooking();
+                    crudService.updateBooking();
                     break;
                 case "4":
-                    deleteBooking();
+                    crudService.deleteBooking();
                     break;
                 case "5":
-                    listAllBookings();
+                    crudService.listAllBookings();
                     break;
                 case "0":
                     inBookingMenu = false;
@@ -95,74 +97,6 @@ public class JdbcConsoleApp {
             }
         }
     }
-
-    // CRUD-операции для бронирований (как реализовано ранее)
-    private static void createBooking() {
-        try {
-            System.out.print("Введите book_ref: ");
-            String bookRef = scanner.nextLine().trim();
-            Timestamp bookDate = new Timestamp(System.currentTimeMillis());
-            System.out.print("Введите total_amount: ");
-            BigDecimal totalAmount = new BigDecimal(scanner.nextLine().trim());
-            if (bookingDao.createBooking(bookRef, bookDate, totalAmount)) {
-                System.out.println("Бронирование успешно создано.");
-            } else {
-                System.out.println("Ошибка при создании бронирования.");
-            }
-        } catch (Exception e) {
-            System.err.println("Ошибка ввода: " + e.getMessage());
-        }
-    }
-
-    private static void getBooking() {
-        System.out.print("Введите book_ref для поиска: ");
-        String bookRef = scanner.nextLine().trim();
-        Booking booking = bookingDao.getBooking(bookRef);
-        if (booking != null) {
-            System.out.println("Найдено: " + booking);
-        } else {
-            System.out.println("Бронирование не найдено.");
-        }
-    }
-
-    private static void updateBooking() {
-        try {
-            System.out.print("Введите book_ref для обновления: ");
-            String bookRef = scanner.nextLine().trim();
-            Timestamp newDate = new Timestamp(System.currentTimeMillis());
-            System.out.print("Введите новое total_amount: ");
-            BigDecimal newTotalAmount = new BigDecimal(scanner.nextLine().trim());
-            if (bookingDao.updateBooking(bookRef, newDate, newTotalAmount)) {
-                System.out.println("Бронирование успешно обновлено.");
-            } else {
-                System.out.println("Ошибка при обновлении бронирования.");
-            }
-        } catch (Exception e) {
-            System.err.println("Ошибка ввода: " + e.getMessage());
-        }
-    }
-
-    private static void deleteBooking() {
-        System.out.print("Введите book_ref для удаления: ");
-        String bookRef = scanner.nextLine().trim();
-        if (bookingDao.deleteBooking(bookRef)) {
-            System.out.println("Бронирование успешно удалено.");
-        } else {
-            System.out.println("Ошибка при удалении бронирования.");
-        }
-    }
-
-    private static void listAllBookings() {
-        List<Booking> bookings = bookingDao.getAllBookings();
-        if (bookings.isEmpty()) {
-            System.out.println("Нет доступных бронирований.");
-        } else {
-            System.out.println("Список бронирований:");
-            bookings.forEach(System.out::println);
-        }
-    }
-
-    // Методы для работы с представлениями
 
     private static void listAircrafts() {
         List<Aircraft> aircrafts = aircraftDao.getAllAircrafts();

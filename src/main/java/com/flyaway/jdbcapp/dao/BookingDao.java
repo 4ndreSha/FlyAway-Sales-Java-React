@@ -1,4 +1,7 @@
-package com.flyaway.jdbcapp;
+package com.flyaway.jdbcapp.dao;
+
+import com.flyaway.jdbcapp.entity.Booking;
+import com.flyaway.jdbcapp.services.DBConnection;
 
 import java.math.BigDecimal;
 import java.sql.*;
