@@ -19,7 +19,6 @@ public class AirportDao {
                 airport.setAirportCode(rs.getString("airport_code"));
                 airport.setAirportName(rs.getString("airport_name"));
                 airport.setCity(rs.getString("city"));
-                // Для поля coordinates можно использовать rs.getString()
                 airport.setCoordinates(rs.getString("coordinates"));
                 airport.setTimezone(rs.getString("timezone"));
                 airports.add(airport);
