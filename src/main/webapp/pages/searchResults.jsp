@@ -34,7 +34,7 @@
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="index.jsp">Главная</a></li>
         <li class="nav-item"><a class="nav-link" href="searchFlights">Поиск рейсов</a></li>
-        <li class="nav-item"><a class="nav-link" href="map.jsp">Карта маршрутов</a></li>
+        <li class="nav-item"><a class="nav-link" href="map">Карта маршрутов</a></li>
         <li class="nav-item"><a class="nav-link" href="account">Личный кабинет</a></li>
       </ul>
       <ul class="navbar-nav">
