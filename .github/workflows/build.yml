@@ -2,6 +2,7 @@ name: SonarQube
 on:
   push:
     branches:
+      - main
       - jdbc-console-app
   pull_request:
     types: [opened, synchronize, reopened]
