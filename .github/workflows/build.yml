@@ -3,11 +3,6 @@ on:
   push:
     branches:
       - main
-      - jsp-client
-      - DataBase
-      - jdbc-console-app
-      - backend-spring-react
-      - backend-spring-angular
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
