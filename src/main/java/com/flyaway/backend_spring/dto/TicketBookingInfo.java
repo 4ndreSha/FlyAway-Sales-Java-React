@@ -22,10 +22,16 @@ public class TicketBookingInfo {
 
     // Геттеры и сеттеры
     public String getTicketNo() { return ticketNo; }
+
     public String getBookRef() { return bookRef; }
+
     public String getContactData() { return contactData; }
+
     public Integer getPassengerId() { return passengerId; }
+
     public ZonedDateTime getBookDate() { return bookDate; }
+
     public Double getTotalAmount() { return totalAmount; }
+
     // Сеттеры при необходимости
 }
