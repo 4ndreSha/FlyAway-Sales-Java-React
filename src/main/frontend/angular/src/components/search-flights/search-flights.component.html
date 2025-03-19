@@ -1,0 +1,49 @@
+<main class="search-main">
+  <div class="container py-2 search-container">
+    <h2 class="mb-4">Поиск рейсов</h2>
+    <form (submit)="handleSubmit($event)">
+      <div class="mb-3 position-relative">
+        <label for="city" class="form-label">Город</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          placeholder="Введите город"
+          required
+          [value]="city"
+          (input)="handleCityChange($event)"
+        >
+        <ul *ngIf="citySuggestions.length > 0" class="list-group position-absolute suggestions-list">
+          <li 
+            *ngFor="let suggestion of citySuggestions; trackBy: trackByCity"
+            class="list-group-item list-group-item-action"
+            (click)="handleSuggestionClick(suggestion)"
+            style="cursor: pointer;"
+          >
+            {{ suggestion }}
+          </li>
+        </ul>
+      </div>
+      <div class="mb-3">
+        <label for="airport" class="form-label">Аэропорт</label>
+        <select
+          class="form-select"
+          id="airport"
+          required
+          [(ngModel)]="airportCode"
+          name="airportCode"
+          [disabled]="airportOptions.length === 0"
+        >
+          <option value="">Выберите аэропорт</option>
+          <option 
+            *ngFor="let item of airportOptions; trackBy: trackByAirport"
+            [value]="item.airportCode"
+          >
+            {{ item.airportCode }} - {{ item.airportName }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Найти рейсы</button>
+    </form>
+  </div>
+</main>

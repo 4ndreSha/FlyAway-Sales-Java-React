@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Все эндпоинты
-                .allowedOrigins("http://localhost:3000") // URL вашего React-приложения
+                .allowedOrigins("http://localhost:3000", "http://localhost:4200") // Добавили Angular
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Разрешенные методы
                 .allowedHeaders("*") // Все заголовки
                 .allowCredentials(true) // Разрешить куки/авторизацию
