@@ -26,7 +26,12 @@ public class Airport {
     @Column(name = "timezone", nullable = false)
     private String timezone;
 
-    public Airport() {
+    protected Airport() {
+        /*
+         * This constructor is required by JPA/Hibernate for entity instantiation.
+         * It should not be used directly in application code as entities are
+         * typically created via parameterized constructors or builder patterns.
+         */
     }
 
     public String getAirportCode() {

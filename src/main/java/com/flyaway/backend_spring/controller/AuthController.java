@@ -4,12 +4,10 @@ import com.flyaway.backend_spring.dto.RegistrationRequest;
 import com.flyaway.backend_spring.dto.LoginRequest;
 import com.flyaway.backend_spring.entity.Passenger;
 import com.flyaway.backend_spring.repository.PassengerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpSession;
 import java.util.Optional;
-
 import java.util.Collections;
 import java.util.Map;
 
@@ -17,14 +15,20 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    @Autowired
-    private PassengerRepository passengerRepository;
+    private static final String PASSENGER_ID_ATTRIBUTE = "PASSENGER_ID"; // Constant for session attribute
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PassengerRepository passengerRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public AuthController(PassengerRepository passengerRepository,
+                          BCryptPasswordEncoder passwordEncoder) {
+        this.passengerRepository = passengerRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @GetMapping("/status")
     public Map<String, Boolean> authStatus(HttpSession session) {
-        boolean isAuthenticated = session.getAttribute("PASSENGER_ID") != null;
+        boolean isAuthenticated = session.getAttribute(PASSENGER_ID_ATTRIBUTE) != null; // Use constant
         return Collections.singletonMap("authenticated", isAuthenticated);
     }
 
@@ -41,7 +45,7 @@ public class AuthController {
         passenger.setPatronymic(request.getPatronymic());
         passenger.setPhone(request.getPhone());
         passengerRepository.save(passenger);
-        session.setAttribute("PASSENGER_ID", passenger.getId());
+        session.setAttribute(PASSENGER_ID_ATTRIBUTE, passenger.getId()); // Use constant
         return "Registration successful";
     }
 
@@ -51,16 +55,10 @@ public class AuthController {
         if (opt.isPresent()) {
             Passenger passenger = opt.get();
             if (passwordEncoder.matches(request.getPassword(), passenger.getPassword())) {
-                session.setAttribute("PASSENGER_ID", passenger.getId());
+                session.setAttribute(PASSENGER_ID_ATTRIBUTE, passenger.getId()); // Use constant
                 return "Login successful";
             }
         }
         return "Invalid email or password";
-    }
-
-    @PostMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "Logged out successfully";
     }
 }

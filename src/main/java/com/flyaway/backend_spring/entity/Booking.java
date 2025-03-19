@@ -19,9 +19,14 @@ public class Booking {
 
     // Геттеры и сеттеры
     public String getBookRef() { return bookRef; }
+
     public void setBookRef(String bookRef) { this.bookRef = bookRef; }
+
     public ZonedDateTime getBookDate() { return bookDate; }
+
     public void setBookDate(ZonedDateTime bookDate) { this.bookDate = bookDate; }
+
     public Double getTotalAmount() { return totalAmount; }
+
     public void setTotalAmount(Double totalAmount) { this.totalAmount = totalAmount; }
 }

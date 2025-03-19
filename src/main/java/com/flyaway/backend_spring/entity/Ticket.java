@@ -28,13 +28,23 @@ public class Ticket {
 
     // Геттеры и сеттеры
     public String getTicketNo() { return ticketNo; }
+
     public void setTicketNo(String ticketNo) { this.ticketNo = ticketNo; }
+
     public String getBookRef() { return bookRef; }
+
     public void setBookRef(String bookRef) { this.bookRef = bookRef; }
+
     public Integer getPassengerId() { return passengerId; }
+
     public void setPassengerId(Integer passengerId) { this.passengerId = passengerId; }
+
     public String getContactData() { return contactData; }
+
     public void setContactData(String contactData) { this.contactData = contactData; }
+
     public Booking getBooking() { return booking; }
+
     public void setBooking(Booking booking) { this.booking = booking; }
+
 }
