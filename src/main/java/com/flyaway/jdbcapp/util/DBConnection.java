@@ -1,4 +1,4 @@
-package com.flyaway.jdbcapp.services;
+package com.flyaway.jdbcapp.util;
 
 import java.io.IOException;
 import java.io.InputStream;

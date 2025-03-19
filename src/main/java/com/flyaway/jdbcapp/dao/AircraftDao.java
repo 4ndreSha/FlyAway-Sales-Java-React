@@ -1,7 +1,7 @@
 package com.flyaway.jdbcapp.dao;
 
 import com.flyaway.jdbcapp.entity.Aircraft;
-import com.flyaway.jdbcapp.services.DBConnection;
+import com.flyaway.jdbcapp.util.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.flyaway.jdbcapp.dao;
 
-import com.flyaway.jdbcapp.services.DBConnection;
+import com.flyaway.jdbcapp.util.DBConnection;
 import com.flyaway.jdbcapp.entity.Route;
 
 import java.sql.*;

@@ -2,7 +2,7 @@ package com.flyaway.jdbcapp;
 
 import com.flyaway.jdbcapp.dao.*;
 import com.flyaway.jdbcapp.entity.*;
-import com.flyaway.jdbcapp.services.CRUDService;
+import com.flyaway.jdbcapp.services.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,34 +15,30 @@ public class JdbcConsoleApp {
     private static FlightDao flightDao = new FlightDao();
     private static RouteDao routeDao = new RouteDao();
     private static Scanner scanner = new Scanner(System.in);
+
     private static CRUDService crudService = new CRUDService(bookingDao, scanner);
+    private final AircraftService aircraftService = new AircraftService(aircraftDao, scanner);
+    private final AirportService airportService = new AirportService(airportDao, scanner);
+    private final FlightService flightService = new FlightService(flightDao, scanner);
+    private final RouteService routeService = new RouteService(routeDao, scanner);
 
     public static void main(String[] args) {
+        new JdbcConsoleApp().run();
+    }
+
+    private void run() {
         boolean running = true;
         while (running) {
             showMenu();
             String choice = scanner.nextLine().trim();
             switch (choice) {
-                case "1":
-                    manageBookingsMenu();
-                    break;
-                case "2":
-                    listAircrafts();
-                    break;
-                case "3":
-                    listAirports();
-                    break;
-                case "4":
-                    listFlights();
-                    break;
-                case "5":
-                    listRoutes();
-                    break;
-                case "0":
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Неверный выбор. Пожалуйста, попробуйте снова.");
+                case "1" -> manageBookingsMenu();
+                case "2" -> aircraftService.listAllAircrafts();
+                case "3" -> airportService.listAllAirports();
+                case "4" -> flightService.listAllFlights();
+                case "5" -> routeService.listAllRoutes();
+                case "0" -> running = false;
+                default -> System.out.println("Неверный выбор. Пожалуйста, попробуйте снова.");
             }
         }
         System.out.println("Приложение завершено.");
@@ -95,46 +91,6 @@ public class JdbcConsoleApp {
                 default:
                     System.out.println("Неверный выбор. Попробуйте снова.");
             }
-        }
-    }
-
-    private static void listAircrafts() {
-        List<Aircraft> aircrafts = aircraftDao.getAllAircrafts();
-        if (aircrafts.isEmpty()) {
-            System.out.println("Нет данных о самолетах.");
-        } else {
-            System.out.println("Список самолетов:");
-            aircrafts.forEach(System.out::println);
-        }
-    }
-
-    private static void listAirports() {
-        List<Airport> airports = airportDao.getAllAirports();
-        if (airports.isEmpty()) {
-            System.out.println("Нет данных об аэропортах.");
-        } else {
-            System.out.println("Список аэропортов:");
-            airports.forEach(System.out::println);
-        }
-    }
-
-    private static void listFlights() {
-        List<Flight> flights = flightDao.getAllFlights();
-        if (flights.isEmpty()) {
-            System.out.println("Нет данных о рейсах.");
-        } else {
-            System.out.println("Список рейсов:");
-            flights.forEach(System.out::println);
-        }
-    }
-
-    private static void listRoutes() {
-        List<Route> routes = routeDao.getAllRoutes();
-        if (routes.isEmpty()) {
-            System.out.println("Нет данных о маршрутах.");
-        } else {
-            System.out.println("Список маршрутов:");
-            routes.forEach(System.out::println);
         }
     }
 }
