@@ -3,7 +3,6 @@ package com.flyaway.backend_spring.controller;
 import com.flyaway.backend_spring.dto.BookingRequest;
 import com.flyaway.backend_spring.entity.Booking;
 import com.flyaway.backend_spring.entity.Ticket;
-import com.flyaway.backend_spring.entity.Passenger;
 import com.flyaway.backend_spring.repository.BookingRepository;
 import com.flyaway.backend_spring.repository.TicketRepository;
 import com.flyaway.backend_spring.repository.PassengerRepository;
@@ -20,7 +19,6 @@ public class BookingController {
 
     private final BookingRepository bookingRepository;
     private final TicketRepository ticketRepository;
-    private final PassengerRepository passengerRepository;
 
     public BookingController(
             BookingRepository bookingRepository,
@@ -29,7 +27,6 @@ public class BookingController {
     ) {
         this.bookingRepository = bookingRepository;
         this.ticketRepository = ticketRepository;
-        this.passengerRepository = passengerRepository;
     }
 
     @PostMapping("/create")
@@ -38,10 +35,6 @@ public class BookingController {
         if (passengerId == null) {
             return "User not authenticated";
         }
-
-        // Fetch passenger and validate existence
-        Passenger passenger = passengerRepository.findById(passengerId)
-                .orElseThrow(() -> new IllegalArgumentException("Passenger not found"));
 
         // Create booking
         Booking booking = new Booking();
