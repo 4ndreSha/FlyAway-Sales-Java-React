@@ -16,7 +16,7 @@ public class AircraftDao {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Aircraft aircraft = new Aircraft();
-                aircraft.setAircraftCode(rs.getString("aircraft_code"));
+                aircraft.setAircraftCode(rs.getInt("aircraft_code"));
                 aircraft.setModel(rs.getString("model"));
                 aircraft.setRange(rs.getInt("range"));
                 aircrafts.add(aircraft);

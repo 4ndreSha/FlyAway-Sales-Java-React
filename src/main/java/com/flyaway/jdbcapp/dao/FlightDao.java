@@ -27,14 +27,14 @@ public class FlightDao {
                 flight.setScheduledArrival(rs.getTimestamp("scheduled_arrival"));
                 flight.setScheduledArrivalLocal(rs.getTimestamp("scheduled_arrival_local"));
                 flight.setScheduledDuration(rs.getString("scheduled_duration"));
-                flight.setDepartureAirport(rs.getString("departure_airport"));
+                flight.setDepartureAirport(rs.getInt("departure_airport"));
                 flight.setDepartureAirportName(rs.getString("departure_airport_name"));
                 flight.setDepartureCity(rs.getString("departure_city"));
-                flight.setArrivalAirport(rs.getString("arrival_airport"));
+                flight.setArrivalAirport(rs.getInt("arrival_airport"));
                 flight.setArrivalAirportName(rs.getString("arrival_airport_name"));
                 flight.setArrivalCity(rs.getString("arrival_city"));
                 flight.setStatus(rs.getString("status"));
-                flight.setAircraftCode(rs.getString("aircraft_code"));
+                flight.setAircraftCode(rs.getInt("aircraft_code"));
                 flight.setActualDeparture(rs.getTimestamp("actual_departure"));
                 flight.setActualDepartureLocal(rs.getTimestamp("actual_departure_local"));
                 flight.setActualArrival(rs.getTimestamp("actual_arrival"));

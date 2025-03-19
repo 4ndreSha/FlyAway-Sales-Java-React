@@ -2,13 +2,13 @@ package com.flyaway.jdbcapp.entity;
 
 public class Route {
     private String flightNo;
-    private String departureAirport;
+    private int departureAirport;
     private String departureAirportName;
     private String departureCity;
-    private String arrivalAirport;
+    private int arrivalAirport;
     private String arrivalAirportName;
     private String arrivalCity;
-    private String aircraftCode;
+    private int aircraftCode;
     private String duration;       // Интервал в виде строки
     private String daysOfWeek;     // Можно сохранить как строку (например, "[1,2,3]")
 
@@ -19,10 +19,10 @@ public class Route {
     public void setFlightNo(String flightNo) {
         this.flightNo = flightNo;
     }
-    public String getDepartureAirport() {
+    public int getDepartureAirport() {
         return departureAirport;
     }
-    public void setDepartureAirport(String departureAirport) {
+    public void setDepartureAirport(int departureAirport) {
         this.departureAirport = departureAirport;
     }
     public String getDepartureAirportName() {
@@ -37,10 +37,10 @@ public class Route {
     public void setDepartureCity(String departureCity) {
         this.departureCity = departureCity;
     }
-    public String getArrivalAirport() {
+    public int getArrivalAirport() {
         return arrivalAirport;
     }
-    public void setArrivalAirport(String arrivalAirport) {
+    public void setArrivalAirport(int arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
     }
     public String getArrivalAirportName() {
@@ -55,10 +55,10 @@ public class Route {
     public void setArrivalCity(String arrivalCity) {
         this.arrivalCity = arrivalCity;
     }
-    public String getAircraftCode() {
+    public int getAircraftCode() {
         return aircraftCode;
     }
-    public void setAircraftCode(String aircraftCode) {
+    public void setAircraftCode(int aircraftCode) {
         this.aircraftCode = aircraftCode;
     }
     public String getDuration() {

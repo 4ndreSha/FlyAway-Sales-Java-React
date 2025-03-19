@@ -10,14 +10,14 @@ public class Flight {
     private Timestamp scheduledArrival;
     private Timestamp scheduledArrivalLocal;
     private String scheduledDuration; // Интервал можно сохранить как строку
-    private String departureAirport;
+    private int departureAirport;
     private String departureAirportName;
     private String departureCity;
-    private String arrivalAirport;
+    private int arrivalAirport;
     private String arrivalAirportName;
     private String arrivalCity;
     private String status;
-    private String aircraftCode;
+    private int aircraftCode;
     private Timestamp actualDeparture;
     private Timestamp actualDepartureLocal;
     private Timestamp actualArrival;
@@ -68,10 +68,10 @@ public class Flight {
     public void setScheduledDuration(String scheduledDuration) {
         this.scheduledDuration = scheduledDuration;
     }
-    public String getDepartureAirport() {
+    public int getDepartureAirport() {
         return departureAirport;
     }
-    public void setDepartureAirport(String departureAirport) {
+    public void setDepartureAirport(int departureAirport) {
         this.departureAirport = departureAirport;
     }
     public String getDepartureAirportName() {
@@ -86,10 +86,10 @@ public class Flight {
     public void setDepartureCity(String departureCity) {
         this.departureCity = departureCity;
     }
-    public String getArrivalAirport() {
+    public int getArrivalAirport() {
         return arrivalAirport;
     }
-    public void setArrivalAirport(String arrivalAirport) {
+    public void setArrivalAirport(int arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
     }
     public String getArrivalAirportName() {
@@ -110,10 +110,10 @@ public class Flight {
     public void setStatus(String status) {
         this.status = status;
     }
-    public String getAircraftCode() {
+    public int getAircraftCode() {
         return aircraftCode;
     }
-    public void setAircraftCode(String aircraftCode) {
+    public void setAircraftCode(int aircraftCode) {
         this.aircraftCode = aircraftCode;
     }
     public Timestamp getActualDeparture() {

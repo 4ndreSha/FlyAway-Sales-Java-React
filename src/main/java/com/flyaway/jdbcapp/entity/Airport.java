@@ -1,17 +1,18 @@
 package com.flyaway.jdbcapp.entity;
 
 public class Airport {
-    private String airportCode;
+    private int airportCode;
     private String airportName;
     private String city;
-    private String coordinates; // Можно сохранить как строку
+    private double latitude;
+    private double longitude;
     private String timezone;
 
     // Геттеры и сеттеры
-    public String getAirportCode() {
+    public int getAirportCode() {
         return airportCode;
     }
-    public void setAirportCode(String airportCode) {
+    public void setAirportCode(int airportCode) {
         this.airportCode = airportCode;
     }
     public String getAirportName() {
@@ -26,11 +27,17 @@ public class Airport {
     public void setCity(String city) {
         this.city = city;
     }
-    public String getCoordinates() {
-        return coordinates;
+    public double getLatitude() {
+        return latitude;
     }
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+    public double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
     public String getTimezone() {
         return timezone;
@@ -45,7 +52,8 @@ public class Airport {
                 "airportCode='" + airportCode + '\'' +
                 ", airportName='" + airportName + '\'' +
                 ", city='" + city + '\'' +
-                ", coordinates='" + coordinates + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
                 ", timezone='" + timezone + '\'' +
                 '}';
     }

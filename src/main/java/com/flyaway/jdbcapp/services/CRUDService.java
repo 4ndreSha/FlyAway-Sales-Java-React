@@ -20,7 +20,7 @@ public class CRUDService {
     public void createBooking() {
         try {
             System.out.print("Введите book_ref: ");
-            String bookRef = scanner.nextLine().trim();
+            int bookRef = Integer.parseInt(scanner.nextLine().trim());
             Timestamp bookDate = new Timestamp(System.currentTimeMillis());
             System.out.print("Введите total_amount: ");
             BigDecimal totalAmount = new BigDecimal(scanner.nextLine().trim());
@@ -37,7 +37,7 @@ public class CRUDService {
 
     public void getBooking() {
         System.out.print("Введите book_ref для поиска: ");
-        String bookRef = scanner.nextLine().trim();
+        int bookRef = Integer.parseInt(scanner.nextLine().trim());
         Booking booking = bookingDao.getBooking(bookRef);
 
         if (booking != null) {
@@ -50,10 +50,10 @@ public class CRUDService {
     public void updateBooking() {
         try {
             System.out.print("Введите book_ref для обновления: ");
-            String bookRef = scanner.nextLine().trim();
+            int bookRef = Integer.parseInt(scanner.nextLine().trim());
             Timestamp newDate = new Timestamp(System.currentTimeMillis());
             System.out.print("Введите новое total_amount: ");
-            BigDecimal newTotalAmount = new BigDecimal(scanner.nextLine().trim());
+            int newTotalAmount = Integer.parseInt(scanner.nextLine().trim());
 
             if (bookingDao.updateBooking(bookRef, newDate, newTotalAmount)) {
                 System.out.println("Бронирование успешно обновлено.");
@@ -67,7 +67,7 @@ public class CRUDService {
 
     public void deleteBooking() {
         System.out.print("Введите book_ref для удаления: ");
-        String bookRef = scanner.nextLine().trim();
+        int bookRef = Integer.parseInt(scanner.nextLine().trim());
 
         if (bookingDao.deleteBooking(bookRef)) {
             System.out.println("Бронирование успешно удалено.");

@@ -4,33 +4,28 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Booking {
-    private String bookRef;
+    private int bookRef;
     private Timestamp bookDate;
-    private BigDecimal totalAmount;
+    private int totalAmount;
 
-    // Геттеры и сеттеры
-    public String getBookRef() {
+    public int getBookRef() {
         return bookRef;
     }
-
-    public void setBookRef(String bookRef) {
+    public void setBookRef(int bookRef) {
         this.bookRef = bookRef;
     }
-
+    public int getTotalAmount() {
+        return totalAmount;
+    }
+    public void setTotalAmount(int totalAmount) {
+        this.totalAmount = totalAmount;
+    }
     public Timestamp getBookDate() {
         return bookDate;
     }
 
     public void setBookDate(Timestamp bookDate) {
         this.bookDate = bookDate;
-    }
-
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
     }
 
     @Override

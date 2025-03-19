@@ -1,15 +1,15 @@
 package com.flyaway.jdbcapp.entity;
 
 public class Aircraft {
-    private String aircraftCode;
+    private int aircraftCode;
     private String model;
     private int range;
 
     // Геттеры и сеттеры
-    public String getAircraftCode() {
+    public int getAircraftCode() {
         return aircraftCode;
     }
-    public void setAircraftCode(String aircraftCode) {
+    public void setAircraftCode(int aircraftCode) {
         this.aircraftCode = aircraftCode;
     }
     public String getModel() {

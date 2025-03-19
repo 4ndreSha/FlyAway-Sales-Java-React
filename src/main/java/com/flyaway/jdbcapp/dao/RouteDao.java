@@ -19,13 +19,13 @@ public class RouteDao {
             while (rs.next()) {
                 Route route = new Route();
                 route.setFlightNo(rs.getString("flight_no"));
-                route.setDepartureAirport(rs.getString("departure_airport"));
+                route.setDepartureAirport(rs.getInt("departure_airport"));
                 route.setDepartureAirportName(rs.getString("departure_airport_name"));
                 route.setDepartureCity(rs.getString("departure_city"));
-                route.setArrivalAirport(rs.getString("arrival_airport"));
+                route.setArrivalAirport(rs.getInt("arrival_airport"));
                 route.setArrivalAirportName(rs.getString("arrival_airport_name"));
                 route.setArrivalCity(rs.getString("arrival_city"));
-                route.setAircraftCode(rs.getString("aircraft_code"));
+                route.setAircraftCode(rs.getInt("aircraft_code"));
                 route.setDuration(rs.getString("duration"));
                 route.setDaysOfWeek(rs.getString("days_of_week"));
                 routes.add(route);
