@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="container mt-4 vh-100">
+  <h2>Регистрация</h2>
+  <p *ngIf="message" class="text-danger">{{ message }}</p>
+  <form (ngSubmit)="handleSubmit()">
+    <div class="mb-3">
+      <label>Email:</label>
+      <input type="email" name="email" class="form-control" [(ngModel)]="formData.email" required>
+    </div>
+    <div class="mb-3">
+      <label>Пароль:</label>
+      <input type="password" name="password" class="form-control" [(ngModel)]="formData.password" required>
+    </div>
+    <div class="mb-3">
+      <label>Имя:</label>
+      <input type="text" name="firstName" class="form-control" [(ngModel)]="formData.firstName" required>
+    </div>
+    <div class="mb-3">
+      <label>Фамилия:</label>
+      <input type="text" name="lastName" class="form-control" [(ngModel)]="formData.lastName" required>
+    </div>
+    <div class="mb-3">
+      <label>Отчество:</label>
+      <input type="text" name="patronymic" class="form-control" [(ngModel)]="formData.patronymic">
+    </div>
+    <div class="mb-3">
+      <label>Телефон:</label>
+      <input type="text" name="phone" class="form-control" [(ngModel)]="formData.phone">
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+  </form>
+</div>
+<app-footer></app-footer>
