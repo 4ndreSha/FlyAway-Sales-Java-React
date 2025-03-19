@@ -5,7 +5,6 @@ import com.flyaway.backend_spring.entity.Booking;
 import com.flyaway.backend_spring.entity.Ticket;
 import com.flyaway.backend_spring.repository.BookingRepository;
 import com.flyaway.backend_spring.repository.TicketRepository;
-import com.flyaway.backend_spring.repository.PassengerRepository;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
 import java.time.ZonedDateTime;
@@ -22,8 +21,7 @@ public class BookingController {
 
     public BookingController(
             BookingRepository bookingRepository,
-            TicketRepository ticketRepository,
-            PassengerRepository passengerRepository
+            TicketRepository ticketRepository
     ) {
         this.bookingRepository = bookingRepository;
         this.ticketRepository = ticketRepository;
