@@ -3,12 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-interface Airport {
-  city: string;
-  airportCode: string;
-  airportName: string;
-}
+import { AirportService, Airport } from '../../services/airport.service';
 
 @Component({
   selector: 'app-search-flights',
@@ -27,7 +22,8 @@ export class SearchFlightsComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private airportService: AirportService
   ) {}
 
   ngOnInit(): void {
@@ -39,47 +35,45 @@ export class SearchFlightsComponent implements OnInit {
     });
   }
 
-  async fetchAirports() {
-    try {
-      const response = await fetch('/api/airports');
-      if (!response.ok) {
-        throw new Error('Ошибка при получении данных аэропортов');
+  fetchAirports(): void {
+    this.airportService.getAirports().subscribe({
+      next: (data: Airport[]) => {
+        this.airportData = data;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Ошибка при получении данных аэропортов:', err);
       }
-      const data = await response.json();
-      this.airportData = data;
-      this.cdr.detectChanges();
-    } catch (err) {
-      console.error(err);
-    }
+    });
   }
 
   get allCities(): string[] {
     return [...new Set(this.airportData.map(item => item.city))];
   }
 
-  handleCityChange(event: any) {
+  handleCityChange(event: any): void {
     const value = event.target.value;
     this.city = value;
     this.citySuggestions = this.allCities.filter(c =>
       c.toLowerCase().includes(value.toLowerCase())
     );
-    
-    this.airportOptions = this.allCities.includes(value) 
+
+    this.airportOptions = this.allCities.includes(value)
       ? this.airportData.filter(item => item.city === value)
       : [];
-    
+
     this.airportCode = '';
     this.cdr.detectChanges();
   }
 
-  handleSuggestionClick(suggestion: string) {
+  handleSuggestionClick(suggestion: string): void {
     this.city = suggestion;
     this.citySuggestions = [];
     this.airportOptions = this.airportData.filter(item => item.city === suggestion);
     this.cdr.detectChanges();
   }
 
-  handleSubmit(event: Event) {
+  handleSubmit(event: Event): void {
     event.preventDefault();
     if (!this.airportCode) {
       alert("Пожалуйста, выберите аэропорт из списка после выбора города.");

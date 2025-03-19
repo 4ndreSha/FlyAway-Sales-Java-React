@@ -1,38 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule], // <-- Добавляем необходимые модули
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  imports: [RouterModule, CommonModule],
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.checkAuthStatus();
   }
 
-  private checkAuthStatus() {
-    fetch('/api/auth/status', { credentials: 'include' })
-      .then(response => response.json())
-      .then(data => {
+  private checkAuthStatus(): void {
+    this.authService.checkAuthStatus().subscribe({
+      next: (data) => {
         this.isAuthenticated = data.authenticated;
-      })
-      .catch(error => console.error('Ошибка проверки авторизации:', error));
+      },
+      error: (error) => console.error('Ошибка проверки авторизации:', error)
+    });
   }
 
-  handleLogout() {
-    fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
-      .then(() => {
+  handleLogout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
         this.isAuthenticated = false;
-        this.router.navigate(['/']); // Возвращаем навигацию на главную
-      })
-      .catch(error => console.error('Ошибка при выходе:', error));
+        this.router.navigate(['/']);
+      },
+      error: (error) => console.error('Ошибка при выходе:', error)
+    });
   }
 }

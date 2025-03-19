@@ -21,8 +21,7 @@ interface FlightsData {
   selector: 'app-flight-results-two-columns',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './flight-results-two-columns.component.html',
-  styleUrls: ['./flight-results-two-columns.component.css']
+  templateUrl: './flight-results-two-columns.component.html'
 })
 export class FlightResultsTwoColumnsComponent {
   @Input() flightsData!: FlightsData;

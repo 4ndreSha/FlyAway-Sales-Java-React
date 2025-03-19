@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="min-vh-100">
+  <app-search-flights (onSearch)="handleSearch($event)"></app-search-flights>
+  <p *ngIf="loading">Загрузка...</p>
+  <p *ngIf="error" style="color: red;">Ошибка: {{ error }}</p>
+  <ng-container *ngIf="flights">
+    <app-flight-results-two-columns [flightsData]="flights"></app-flight-results-two-columns>
+  </ng-container>
+</div>
+<app-footer></app-footer>

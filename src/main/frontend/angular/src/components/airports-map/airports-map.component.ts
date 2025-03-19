@@ -1,16 +1,18 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as L from 'leaflet';
+import { AirportService, Airport } from '../../services/airport.service';
 
 @Component({
   selector: 'app-airports-map',
   standalone: true,
-  templateUrl: './airports-map.component.html',
-  styleUrls: ['./airports-map.component.css']
+  templateUrl: './airports-map.component.html'
 })
 export class AirportsMapComponent implements OnInit, OnDestroy {
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
   map!: L.Map;
-  airports: any[] = [];
+  airports: Airport[] = [];
+
+  constructor(private airportService: AirportService) {}
 
   // Функция экранирования HTML (аналог escapeHtml в React)
   escapeHtml(str: string): string {
@@ -35,14 +37,8 @@ export class AirportsMapComponent implements OnInit, OnDestroy {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
 
-    fetch('http://localhost:8080/api/airports')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Ошибка при получении данных аэропортов');
-        }
-        return response.json();
-      })
-      .then((data: any[]) => {
+    this.airportService.getAirports().subscribe({
+      next: (data: Airport[]) => {
         this.airports = data;
         data.forEach(airport => {
           if (airport.coordinates) {
@@ -71,10 +67,11 @@ export class AirportsMapComponent implements OnInit, OnDestroy {
             }
           }
         });
-      })
-      .catch(error => {
+      },
+      error: (error) => {
         console.error('Ошибка при получении аэропортов:', error);
-      });
+      }
+    });
   }
 
   ngOnDestroy(): void {

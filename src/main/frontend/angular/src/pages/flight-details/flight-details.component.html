@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container mt-4 vh-100" *ngIf="flight; else loadingTemplate">
+  <h2>Детали рейса</h2>
+  <p *ngIf="message" class="text-success">{{ message }}</p>
+  <div class="card p-3">
+    <p><strong>Номер рейса:</strong> {{ flight.flightNo }}</p>
+    <p>
+      <strong>Время вылета:</strong>
+      {{ flight.scheduledDeparture | date:'short' }}
+    </p>
+    <p>
+      <strong>Время прибытия:</strong>
+      {{ flight.scheduledArrival | date:'short' }}
+    </p>
+    <p><strong>Аэропорт вылета:</strong> {{ flight.departureAirport }}</p>
+    <p><strong>Аэропорт прибытия:</strong> {{ flight.arrivalAirport }}</p>
+    <p><strong>Статус:</strong> {{ flight.status }}</p>
+    <button class="btn btn-primary" (click)="handleBooking()">Забронировать</button>
+  </div>
+</div>
+<ng-template #loadingTemplate>
+  <p class="text-center">Загрузка...</p>
+</ng-template>
+<app-footer></app-footer>
